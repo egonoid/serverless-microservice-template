@@ -4,24 +4,31 @@
   "description": "Template starter project for egonoid serverless microservices.",
   "main": "handler.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --watch",
+    "test:single": "jest",
     "lint": "tslint --project .",
     "lint:fix": "tslint -c tslint.json 'src/**/*.ts' --fix",
     "format": "prettier --write src/**/*.{js,json,yml,ts}"
   },
   "dependencies": {
+    "aws-sdk": "^2.476.0",
     "source-map-support": "^0.5.10"
   },
   "devDependencies": {
+    "@serverless/event-mocks": "^1.1.1",
     "@types/aws-lambda": "^8.10.17",
+    "@types/jest": "^24.0.14",
     "@types/node": "^10.12.18",
+    "aws-sdk-mock": "^4.4.0",
     "husky": "^2.4.1",
+    "jest": "^24.8.0",
     "lint-staged": "^8.2.1",
     "prettier": "^1.18.2",
     "serverless": "^1.45.1",
     "serverless-offline": "^5.3.3",
     "serverless-pseudo-parameters": "^2.4.0",
     "serverless-webpack": "^5.2.0",
+    "ts-jest": "^24.0.2",
     "ts-loader": "^5.3.3",
     "tslint": "^5.17.0",
     "typescript": "^3.2.4",

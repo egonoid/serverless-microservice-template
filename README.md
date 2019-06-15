@@ -23,3 +23,27 @@ yarn format
 ```bash
 yarn lint
 ```
+
+## Debugging
+
+## Testing
+
+Example can be found at `src/handlers/handler.test.ts`.
+
+Start tests in watch mode:
+
+```bash
+yarn test
+```
+
+Single run tests:
+
+```bash
+yarn test:single
+```
+
+### Mocks
+
+- https://kalinchernev.github.io/tdd-serverless-jest/#mocking-aws-services
+- https://github.com/dwyl/aws-sdk-mock
+- https://github.com/serverless/event-mocks
