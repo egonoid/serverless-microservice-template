@@ -1,0 +1,25 @@
+service:
+  name: serverless-microservice-template
+
+plugins:
+  - serverless-webpack
+  - serverless-pseudo-parameters
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+
+functions:
+  hello:
+    handler: src/handlers/handler.hello
+    events:
+      - http:
+          method: get
+          path: hello
+
+custom:
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules: true
+    packager: yarn
