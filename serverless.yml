@@ -4,7 +4,6 @@ service:
 plugins:
   - serverless-webpack
   - serverless-pseudo-parameters
-  - serverless-offline
 
 provider:
   name: aws
@@ -21,5 +20,5 @@ functions:
 custom:
   webpack:
     webpackConfig: ./webpack.config.js
-    includeModules: true
-    packager: yarn
+    packager: 'yarn'
+    excludeFiles: src/**/*.test.ts

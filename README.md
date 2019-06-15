@@ -26,6 +26,8 @@ yarn lint
 
 ## Debugging
 
+VSCode debugging is configured for hello function.
+
 ## Testing
 
 Example can be found at `src/handlers/handler.test.ts`.
