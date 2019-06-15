@@ -30,18 +30,18 @@ VSCode debugging is configured for hello function.
 
 ## Testing
 
-Example can be found at `src/handlers/handler.test.ts`.
+An example can be found at `src/handlers/handler.test.ts`.
 
-Start tests in watch mode:
+Single run tests:
 
 ```bash
 yarn test
 ```
 
-Single run tests:
+Start tests in watch mode:
 
 ```bash
-yarn test:single
+yarn test:watch
 ```
 
 ### Mocks
