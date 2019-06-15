@@ -8,7 +8,15 @@ Based on [aws-nodejs-typescript](https://github.com/serverless/serverless/tree/m
 git clone https://github.com/egonoid/serverless-microservice-template serverless-crud-microservice-template new-service
 ```
 
-## Run hello function
+## Run functions
+
+### Start watch mode
+
+```bash
+yarn dev
+```
+
+### Execute single function
 
 ```bash
 sls invoke local -f hello -p events/hello.json

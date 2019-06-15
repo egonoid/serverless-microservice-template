@@ -4,6 +4,7 @@ service:
 plugins:
   - serverless-webpack
   - serverless-pseudo-parameters
+  - serverless-offline
 
 provider:
   name: aws
