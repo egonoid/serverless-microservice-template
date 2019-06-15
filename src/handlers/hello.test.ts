@@ -1,4 +1,4 @@
-import { hello } from './handler';
+import hello from './hello';
 import { Context, APIGatewayProxyEvent } from 'aws-lambda';
 import createEvent from '@serverless/event-mocks';
 
