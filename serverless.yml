@@ -9,6 +9,12 @@ plugins:
 provider:
   name: aws
   runtime: nodejs10.x
+  region: eu-central-1
+  stage: ${opt:stage, 'dev'}
+  environment:
+    accountId: '#{AWS::AccountId}'
+    region: '#{AWS::Region}'
+    stage: ${self:provider.stage}
 
 functions:
   hello:
