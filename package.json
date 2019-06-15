@@ -4,8 +4,8 @@
   "description": "Template starter project for egonoid serverless microservices.",
   "main": "handler.js",
   "scripts": {
-    "test": "jest --watch",
-    "test:single": "jest",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "lint": "tslint --project .",
     "lint:fix": "tslint -c tslint.json 'src/**/*.ts' --fix",
     "format": "prettier --write src/**/*.{js,json,yml,ts}"
