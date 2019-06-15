@@ -5,7 +5,7 @@ Based on [aws-nodejs-typescript](https://github.com/serverless/serverless/tree/m
 ## How to create a new microservice with this template
 
 ```bash
-sls create --template https://github.com/egonoid/serverless-microservice-template
+git clone https://github.com/egonoid/serverless-microservice-template serverless-crud-microservice-template new-service
 ```
 
 ## Run hello function
