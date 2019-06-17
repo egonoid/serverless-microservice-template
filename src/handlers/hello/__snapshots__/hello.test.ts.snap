@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`handler should return the passed in message 1`] = `
+Object {
+  "body": "{
+  \\"message\\": \\"test\\"
+}",
+  "statusCode": 200,
+}
+`;
