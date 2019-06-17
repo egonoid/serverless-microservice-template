@@ -5,7 +5,7 @@ Based on [aws-nodejs-typescript](https://github.com/serverless/serverless/tree/m
 ## Installation
 
 ```bash
-git clone https://github.com/egonoid/serverless-microservice-template serverless-crud-microservice-template new-service
+git clone https://github.com/egonoid/serverless-microservice-template new-service
 cd new-service
 rm -r .git
 git init
