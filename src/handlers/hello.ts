@@ -4,7 +4,7 @@ import 'source-map-support/register';
 export const hello: APIGatewayProxyHandler = async (
   event: APIGatewayProxyEvent
 ) => {
-  const body = JSON.parse(event.body);
+  const body = event.queryStringParameters;
 
   return {
     statusCode: 200,

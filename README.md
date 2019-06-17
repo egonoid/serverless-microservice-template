@@ -2,21 +2,30 @@
 
 Based on [aws-nodejs-typescript](https://github.com/serverless/serverless/tree/master/lib/plugins/create/templates/aws-nodejs-typescript).
 
-## How to create a new microservice with this template
+## Installation
 
 ```bash
 git clone https://github.com/egonoid/serverless-microservice-template serverless-crud-microservice-template new-service
+cd new-service
+rm -r .git
+git init
+git commit -m "Initial commit"
+yarn install
 ```
 
-## Run functions
-
-### Start watch mode
+## Development
 
 ```bash
 yarn dev
 ```
 
-### Execute single function
+Execute hello function
+
+```bash
+GET http://localhost:3000/hello?message=test
+```
+
+## Execute single function
 
 ```bash
 sls invoke local -f hello -p events/hello.json
