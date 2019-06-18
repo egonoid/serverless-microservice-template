@@ -22,10 +22,10 @@ yarn dev
 Execute hello function
 
 ```bash
-GET http://localhost:3000/hello?message=test
+curl http://localhost:3000/hello?message=test
 ```
 
-## Execute single function
+or
 
 ```bash
 sls invoke local -f hello -p events/hello.json
@@ -47,7 +47,7 @@ VSCode debugging is configured for hello function.
 
 ## Testing
 
-An example can be found at `src/handlers/handler.test.ts`.
+An example can be found at `src/handlers/hello/hello.test.ts`.
 
 Single run tests:
 
