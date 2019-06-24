@@ -47,7 +47,12 @@ VSCode debugging is configured for ping function.
 
 ## Testing
 
+<<<<<<< HEAD
 An example can be found at `src/handlers/ping/ping.test.ts`.
+=======
+An example can be found at `src/handlers/hello/hello.test.ts`.
+
+> > > > > > > 891885c6777636640b38f01e04e27f8d9dfc3cd2
 
 Single run tests:
 
