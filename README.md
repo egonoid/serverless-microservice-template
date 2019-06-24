@@ -19,16 +19,16 @@ yarn install
 yarn dev
 ```
 
-Execute hello function
+Execute ping function
 
 ```bash
-curl http://localhost:3000/hello?message=test
+curl http://localhost:3000/ping?message=test
 ```
 
 or
 
 ```bash
-sls invoke local -f hello -p events/hello.json
+sls invoke local -f ping -p events/ping.json
 ```
 
 ## Linting
@@ -43,11 +43,11 @@ yarn lint
 
 ## Debugging
 
-VSCode debugging is configured for hello function.
+VSCode debugging is configured for ping function.
 
 ## Testing
 
-An example can be found at `src/handlers/hello/hello.test.ts`.
+An example can be found at `src/handlers/ping/ping.test.ts`.
 
 Single run tests:
 

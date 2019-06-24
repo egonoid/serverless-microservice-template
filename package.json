@@ -2,7 +2,7 @@
   "name": "serverless-microservice-template",
   "version": "0.0.1",
   "description": "Template starter project for egonoid serverless microservices.",
-  "main": "src/handlers/hello.ts",
+  "main": "src/handlers/ping.ts",
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",

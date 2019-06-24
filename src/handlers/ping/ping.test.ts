@@ -1,4 +1,4 @@
-import hello from './hello';
+import ping from './ping';
 import { Context } from 'aws-lambda';
 import createEvent from '@serverless/event-mocks';
 
@@ -14,7 +14,7 @@ describe('handler', () => {
     const callback = null;
 
     // Act
-    const result = await hello(event, context, callback);
+    const result = await ping(event, context, callback);
 
     // Assert
     expect(result).toMatchSnapshot();

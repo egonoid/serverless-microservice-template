@@ -1,7 +1,7 @@
 import { APIGatewayProxyEvent, APIGatewayProxyHandler } from 'aws-lambda';
 import 'source-map-support/register';
 
-export const hello: APIGatewayProxyHandler = async (
+export const ping: APIGatewayProxyHandler = async (
   event: APIGatewayProxyEvent
 ) => {
   const body = event.queryStringParameters;
@@ -18,4 +18,4 @@ export const hello: APIGatewayProxyHandler = async (
   };
 };
 
-export default hello;
+export default ping;

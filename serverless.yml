@@ -17,12 +17,12 @@ provider:
     stage: ${self:provider.stage}
 
 functions:
-  hello:
-    handler: src/handlers/hello/hello.default
+  ping:
+    handler: src/handlers/ping/ping.default
     events:
       - http:
           method: get
-          path: hello
+          path: ping
 
 custom:
   webpack:
