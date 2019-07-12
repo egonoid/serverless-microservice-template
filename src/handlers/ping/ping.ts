@@ -5,12 +5,13 @@ export const ping: APIGatewayProxyHandler = async (
   event: APIGatewayProxyEvent
 ) => {
   const body = event.queryStringParameters;
+  const message = body && body.message ? body.message : 'pong';
 
   return {
     statusCode: 200,
     body: JSON.stringify(
       {
-        message: body.message,
+        message,
       },
       null,
       2

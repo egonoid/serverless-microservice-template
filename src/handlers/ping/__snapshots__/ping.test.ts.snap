@@ -1,5 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`handler should return the "pong" when no message is passed in 1`] = `
+Object {
+  "body": "{
+  \\"message\\": \\"pong\\"
+}",
+  "statusCode": 200,
+}
+`;
+
 exports[`handler should return the passed in message 1`] = `
 Object {
   "body": "{
