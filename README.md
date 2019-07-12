@@ -16,7 +16,7 @@ yarn install
 ## Development
 
 ```bash
-yarn dev
+yarn start
 ```
 
 Execute ping function
@@ -31,7 +31,7 @@ or
 sls invoke local -f ping -p events/ping.json
 ```
 
-## Linting
+## Linting & Code formatting
 
 ```bash
 yarn format
