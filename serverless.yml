@@ -12,9 +12,9 @@ provider:
   region: eu-central-1
   stage: ${opt:stage, 'dev'}
   environment:
-    accountId: '#{AWS::AccountId}'
-    region: '#{AWS::Region}'
-    stage: ${self:provider.stage}
+    ACCOUNT_ID: '#{AWS::AccountId}'
+    REGION: '#{AWS::Region}'
+    STAGE: ${self:provider.stage}
 
 functions:
   ping:
