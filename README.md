@@ -9,8 +9,9 @@ git clone https://github.com/egonoid/serverless-microservice-template new-servic
 cd new-service
 rm -r .git
 git init
+git add --all
 git commit -m "Initial commit"
-yarn install
+yarn
 ```
 
 ## Development
