@@ -5,6 +5,7 @@ plugins:
   - serverless-webpack
   - serverless-pseudo-parameters
   - serverless-offline
+  - serverless-plugin-aws-alerts
 
 provider:
   name: aws
@@ -29,3 +30,24 @@ custom:
     webpackConfig: ./webpack.config.js
     packager: 'yarn'
     excludeFiles: src/**/*.test.ts
+  alerts:
+    stages:
+      - test
+      - prod
+    topics:
+      ok:
+        topic: ${opt:stage}-${self:service}-alerts-ok
+        notifications:
+          - protocol: email
+            endpoint: devops@egonoid.com
+      alarm:
+        topic: ${opt:stage}-${self:service}-alerts-alarm
+        notifications:
+          - protocol: email
+            endpoint: devops@egonoid.com
+    nameTemplate: $[functionId]-$[metricName]
+    alarms:
+      - functionErrors
+    definitions:
+      functionErrors:
+        treatMissingData: notBreaching
