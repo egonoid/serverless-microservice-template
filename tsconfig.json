@@ -8,7 +8,9 @@
     "target": "es2017",
     "outDir": "lib",
     "esModuleInterop": true,
-    "typeRoots": ["./node_modules/@types"]
+    "typeRoots": ["./node_modules/@types"],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   },
   "exclude": ["node_modules"]
 }

@@ -9,10 +9,13 @@
     "lint": "tslint --project .",
     "lint:fix": "tslint -c tslint.json 'src/**/*.ts' --fix",
     "format": "prettier --write src/**/*.{js,json,yml,ts}",
-    "start": "sls offline start"
+    "start": "sls offline start",
+    "build": "sls webpack -s dev"
   },
   "dependencies": {
     "aws-sdk": "^2.476.0",
+    "inversify": "^5.0.1",
+    "reflect-metadata": "^0.1.13",
     "source-map-support": "^0.5.10"
   },
   "devDependencies": {
