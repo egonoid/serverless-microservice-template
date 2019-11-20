@@ -15,6 +15,7 @@
   "dependencies": {
     "aws-sdk": "^2.476.0",
     "inversify": "^5.0.1",
+    "middy": "^0.30.4",
     "reflect-metadata": "^0.1.13",
     "source-map-support": "^0.5.10"
   },
