@@ -1,7 +1,7 @@
 import { Container } from 'inversify';
 import * as Types from './types';
-import { IPingService } from '../../application/interfaces/ping.service';
-import PingService from '../../application/ping.service';
+import { IPingService } from '../../application/services/interfaces/ping.service';
+import PingService from '../../application/services/ping.service';
 
 const container = new Container({ skipBaseClassChecks: true });
 

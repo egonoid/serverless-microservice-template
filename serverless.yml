@@ -19,7 +19,7 @@ provider:
 
 functions:
   ping:
-    handler: src/handlers/ping/ping.default
+    handler: src/api/handlers/ping/ping.default
     events:
       - http:
           method: get
