@@ -5,6 +5,7 @@ import { IPingService } from '../../../application/services/interfaces/ping.serv
 import * as Types from '../../../common/dependency-injection/types';
 import container from '../../../common/dependency-injection/container';
 import middy from 'middy';
+import { cors } from 'middy/middlewares';
 import eventLogger from '../../middlewares/eventLogger.middleware';
 
 export const ping: APIGatewayProxyHandler = async (
@@ -23,4 +24,6 @@ export const ping: APIGatewayProxyHandler = async (
   };
 };
 
-export default middy(ping).use(eventLogger());
+export default middy(ping)
+  .use(eventLogger())
+  .use(cors());

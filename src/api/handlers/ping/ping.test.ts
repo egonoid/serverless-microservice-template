@@ -21,7 +21,7 @@ describe('handler', () => {
     const data = {};
     const event = createEvent('aws:apiGateway', data as any);
     const context: Context = {} as Context;
-    const callback = null;
+    const callback = () => null;
 
     // Act
     const result = await ping(event, context, callback);
