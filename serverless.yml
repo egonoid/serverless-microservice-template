@@ -24,6 +24,7 @@ functions:
       - http:
           method: get
           path: ping
+          cors: true
 
 custom:
   webpack:
