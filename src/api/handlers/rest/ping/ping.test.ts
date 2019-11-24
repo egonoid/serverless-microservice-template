@@ -1,10 +1,10 @@
 import ping from './ping';
 import { Context } from 'aws-lambda';
 import createEvent from '@serverless/event-mocks';
-import { IPingService } from '../../../application/services/interfaces/ping.service';
-import * as Types from '../../../common/dependency-injection/types';
-import container from '../../../common/dependency-injection/container';
-import PingService from '../../../application/services/ping.service';
+import { IPingService } from '../../../../application/services/interfaces/ping.service';
+import * as Types from '../../../../common/dependency-injection/types';
+import container from '../../../../common/dependency-injection/container';
+import PingService from '../../../../application/services/ping.service';
 
 describe('handler', () => {
   beforeAll(() => {
