@@ -1,5 +1,9 @@
 import 'reflect-metadata';
-import { APIGatewayProxyEvent, APIGatewayProxyHandler } from 'aws-lambda';
+import {
+  APIGatewayProxyEvent,
+  APIGatewayProxyHandler,
+  APIGatewayProxyResult,
+} from 'aws-lambda';
 import 'source-map-support/register';
 import { IPingService } from '../../../../application/services/interfaces/ping.service';
 import * as Types from '../../../../common/dependency-injection/types';
@@ -10,7 +14,7 @@ import eventLogger from '../../../middlewares/eventLogger.middleware';
 
 export const ping: APIGatewayProxyHandler = async (
   event: APIGatewayProxyEvent
-) => {
+): Promise<APIGatewayProxyResult> => {
   const body = event.queryStringParameters;
   const message = body && body.message;
   const pingService = container.get<IPingService>(Types.PingService);
