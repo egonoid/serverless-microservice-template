@@ -8,7 +8,7 @@
     "test:watch": "jest --watch",
     "lint": "tslint --project .",
     "lint:fix": "tslint -c tslint.json 'src/**/*.ts' --fix",
-    "format": "prettier --write src/**/*.{js,json,yml,ts}",
+    "format": "prettier --write 'src/**/*.{js,json,yml,ts}'",
     "start": "sls offline start",
     "build": "sls webpack -s dev"
   },

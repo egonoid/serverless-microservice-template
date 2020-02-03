@@ -16,7 +16,7 @@ export const ping: APIGatewayProxyHandler = async (
   event: APIGatewayProxyEvent
 ): Promise<APIGatewayProxyResult> => {
   const body = event.queryStringParameters;
-  const message = body && body.message;
+  const message = body?.message;
   const pingService = container.get<IPingService>(Types.PingService);
   const result = pingService.ping(message);
 
