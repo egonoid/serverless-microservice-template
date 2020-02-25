@@ -9,7 +9,7 @@ import { IEventService } from '../../application/services/interfaces/event.servi
 const container = new Container({ skipBaseClassChecks: true });
 
 container.bind<IPingService>(Types.PingService).to(PingService);
-container.bind<IEventService>(Types.PingService).to(EventService);
+container.bind<IEventService>(Types.EventService).to(EventService);
 
 decorate(injectable(), SNS);
 container.bind<SNS>(SNS).to(SNS);
