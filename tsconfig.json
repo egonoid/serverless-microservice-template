@@ -11,7 +11,16 @@
     "typeRoots": ["./node_modules/@types"],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "strict": true
+    "strict": true,
+    "baseUrl": "src",
+    "paths": {
+      "@api/*": ["api/*"],
+      "@application/*": ["application/*"],
+      "@domain/*": ["domain/*"],
+      "@common/*": ["common/*"],
+      "@persistence/*": ["persistence/*"],
+      "@external/*": ["external/*"]
+    }
   },
   "exclude": ["node_modules"]
 }
