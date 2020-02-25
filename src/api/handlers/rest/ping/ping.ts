@@ -5,9 +5,9 @@ import {
   APIGatewayProxyResult,
 } from 'aws-lambda';
 import 'source-map-support/register';
-import { IPingService } from '../../../../application/services/interfaces/ping.service';
-import * as Types from '../../../../common/dependency-injection/types';
-import container from '../../../../common/dependency-injection/container';
+import { IPingService } from '@application/services/interfaces/ping.service';
+import * as Types from '@common/dependency-injection/types';
+import container from '@common/dependency-injection/container';
 import middy from 'middy';
 import { cors } from 'middy/middlewares';
 import eventLogger from '../../../middlewares/eventLogger.middleware';
