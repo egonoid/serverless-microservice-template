@@ -9,7 +9,7 @@
     "lint": "tslint --project .",
     "lint:fix": "tslint -c tslint.json 'src/**/*.ts' --fix",
     "format": "prettier --write 'src/**/*.{js,json,yml,ts}'",
-    "start": "sls offline start",
+    "start": "sls offline start -s dev",
     "build": "sls webpack -s dev"
   },
   "dependencies": {
