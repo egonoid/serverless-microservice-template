@@ -767,6 +767,11 @@
     "@types/lodash" "^4.14.123"
     lodash "^4.17.11"
 
+"@shiftcoders/dynamo-easy@^5.6.0":
+  version "5.6.0"
+  resolved "https://registry.yarnpkg.com/@shiftcoders/dynamo-easy/-/dynamo-easy-5.6.0.tgz#b5188851309aa6cfb6d8d7a5ef6a83e4e6afb42d"
+  integrity sha512-PX8ZQHEG3mAC3K4OCjIoACwj30OGiPYu/dJ6EDXLQEbPPaZk6E8dOzRWHd9eGJZLxa63c8/OvfXdr+Pnnbwlcg==
+
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.14.0.tgz#9fb3a3cf3132328151f353de4632e01e52102bea"
@@ -901,6 +906,11 @@
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.134.tgz#9032b440122db3a2a56200e91191996161dde5b9"
   integrity sha512-2/O0khFUCFeDlbi7sZ7ZFRCcT812fAeOLm7Ev4KbwASkZ575TDrDcY7YyaoHdTOzKcNbfiwLYZqPmoC4wadrsw==
 
+"@types/node@*":
+  version "13.9.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.9.0.tgz#5b6ee7a77faacddd7de719017d0bc12f52f81589"
+  integrity sha512-0ARSQootUG1RljH2HncpsY2TJBfGQIKOOi7kxzUY6z54ePu/ZD+wJA8zI2Q6v8rol2qpG/rvqsReco8zNMPvhQ==
+
 "@types/node@^13.7.4":
   version "13.7.4"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-13.7.4.tgz#76c3cb3a12909510f52e5dc04a6298cdf9504ffd"
@@ -915,6 +925,13 @@
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@types/stack-utils/-/stack-utils-1.0.1.tgz#0a851d3bd96498fa25c33ab7278ed3bd65f06c3e"
   integrity sha512-l42BggppR6zLmpfU6fq9HEa2oGPEI8yrSPL3GITjfRInppYFahObbIQOQK3UGxEnyQpltZLaPe75046NOZQikw==
+
+"@types/uuid@3.4.0":
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/@types/uuid/-/uuid-3.4.0.tgz#91639516fbb892ed3737a2bdc1b030d02b4a09c1"
+  integrity sha512-Vd+WmnrQKrrfVJ+9LWyOWqlBQJFsfi8rhKRm3ag3ZrOjY5SmzZkGmxbkgRIk9jpZt4dpvE21cmbBSp1dCV7/fw==
+  dependencies:
+    "@types/node" "*"
 
 "@types/yargs-parser@*":
   version "13.1.0"
@@ -6854,6 +6871,11 @@ uuid@3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
   integrity sha512-yXJmeNaw3DnnKAOKJE51sL/ZaYfWJRl1pK9dr19YFCu0ObS231AB1/LbqTKRAQ5kw8A90rA6fr4riOUpTZvQZA==
+
+uuid@3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
+  integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
 
 uuid@^3.3.2:
   version "3.3.3"

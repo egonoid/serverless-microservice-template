@@ -12,6 +12,7 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "strict": true,
+    "strictPropertyInitialization": false,
     "baseUrl": "src",
     "paths": {
       "@api/*": ["api/*"],
