@@ -19,10 +19,6 @@ export class ProductMapper extends BaseMapper<
   }
 
   mapToEntity(model: ProductDataModel, data?: ImageDataModel[]): Product {
-    if (!data) {
-      throw new Error('Data is missing.');
-    }
-
     return {
       id: model.productId,
       tenantId: model.tenantId,
@@ -31,7 +27,7 @@ export class ProductMapper extends BaseMapper<
       shortDescription: model.shortDescription,
       subline: model.subline,
       images:
-        data.length > 0
+        data && data.length > 0
           ? data.map(img => this.imageMapper.mapToEntity(img))
           : undefined,
       createdAt: model.createdAt,

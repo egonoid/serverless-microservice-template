@@ -17,6 +17,7 @@ yarn
 ## Development
 
 ```bash
+sls dynamodb install -s dev
 yarn start
 ```
 

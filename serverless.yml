@@ -1,11 +1,12 @@
 service:
-  name: serverless-microservice-template
+  name: serverless-microservice-template # change this
 
 plugins:
   - serverless-webpack
   - serverless-pseudo-parameters
   - serverless-offline
   - serverless-plugin-aws-alerts
+  - serverless-dynamodb-local
 
 provider:
   name: aws
@@ -16,6 +17,23 @@ provider:
     ACCOUNT_ID: '#{AWS::AccountId}'
     REGION: '#{AWS::Region}'
     STAGE: ${self:provider.stage}
+    DYNAMO_DB_TABLE: ${opt:stage, self:provider.stage}-${self:service}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+        - dynamodb:BatchWriteItem
+      Resource: 'arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMO_DB_TABLE}'
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+      Resource: 'arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMO_DB_TABLE}/index/*'
 
 functions:
   ping:
@@ -25,6 +43,48 @@ functions:
           method: get
           path: ping
           cors: true
+  readAllProducts:
+    handler: src/api/handlers/rest/products/readAll/readAll.default
+    events:
+      - http:
+          method: get
+          path: /{tenantId}
+          cors: true
+  # readProduct:
+  #   handler: src/api/handlers/rest/readProduct/readProduct.default
+  #   events:
+  #     - http:
+  #         method: get
+  #         path: /{tenantId}/{id}
+  #         cors: true
+  createProduct:
+    handler: src/api/handlers/rest/products/create/create.default
+    events:
+      - http:
+          method: post
+          path: /{tenantId}
+          cors: true
+  # updateProduct:
+  #   handler: src/api/handlers/rest/updateProduct/updateProduct.default
+  #   events:
+  #     - http:
+  #         method: put
+  #         path: /{tenantId}/{id}
+  #         cors: true
+  # deleteProduct:
+  #   handler: src/api/handlers/rest/deleteProduct/deleteProduct.default
+  #   events:
+  #     - http:
+  #         method: delete
+  #         path: /{tenantId}/{id}
+  #         cors: true
+  # onDatabaseUpdated:
+  #   handler: src/api/handlers/events/onDatabaseUpdated/onDatabaseUpdated.default
+  #   events:
+  #     - stream:
+  #         type: dynamodb
+  #         arn:
+  #           Fn::GetAtt: [ProductDynamoDbTable, StreamArn] # change this
 
 custom:
   webpack:
@@ -52,3 +112,48 @@ custom:
     definitions:
       functionErrors:
         treatMissingData: notBreaching
+  basePath: products # change this
+  apiVersion: v1
+  stage: ${opt:stage, self:provider.stage}
+  domains:
+    dev: api-dev.qrpid.io # change this
+    test: api-test.qrpid.io # change this
+    prod: api.qrpid.io # change this
+  customDomain:
+    basePath: ${self:custom.basePath}
+    domainName: ${self:custom.domains.${self:custom.stage}}
+    stage: '${self:custom.stage}'
+    createRoute53Record: false
+  dynamodb:
+    start:
+      port: 8000
+      inMemory: true
+      heapInitial: 200m
+      heapMax: 4g
+      convertEmptyValues: true
+      migrate: true
+    stages:
+      - dev
+
+resources:
+  Resources:
+    ProductDynamoDbTable: # change this
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Delete
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: tenantId
+            AttributeType: S
+          - AttributeName: productKey
+            AttributeType: S
+        KeySchema:
+          - AttributeName: tenantId
+            KeyType: HASH
+          - AttributeName: productKey
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:provider.environment.DYNAMO_DB_TABLE}
+        StreamSpecification:
+          StreamViewType: NEW_AND_OLD_IMAGES
