@@ -73,11 +73,7 @@ export default class ProductService implements IProductService {
 
     const update: Partial<Product> = {
       ...current,
-      description: request.description,
-      shortDescription: request.shortDescription,
-      subline: request.subline,
-      name: request.name,
-      images: request.images,
+      ...request,
     };
 
     const { item } = await this.repository.update(tenantId, id, update);
@@ -93,6 +89,6 @@ export default class ProductService implements IProductService {
     tenantId: string,
     id: string
   ): Promise<BaseServiceResponse<void>> {
-    return await this.delete(tenantId, id);
+    return await this.repository.delete(tenantId, id);
   }
 }

@@ -50,13 +50,13 @@ functions:
           method: get
           path: /{tenantId}
           cors: true
-  # readProduct:
-  #   handler: src/api/handlers/rest/readProduct/readProduct.default
-  #   events:
-  #     - http:
-  #         method: get
-  #         path: /{tenantId}/{id}
-  #         cors: true
+  readProduct:
+    handler: src/api/handlers/rest/products/read/read.default
+    events:
+      - http:
+          method: get
+          path: /{tenantId}/{id}
+          cors: true
   createProduct:
     handler: src/api/handlers/rest/products/create/create.default
     events:
@@ -64,20 +64,20 @@ functions:
           method: post
           path: /{tenantId}
           cors: true
-  # updateProduct:
-  #   handler: src/api/handlers/rest/updateProduct/updateProduct.default
-  #   events:
-  #     - http:
-  #         method: put
-  #         path: /{tenantId}/{id}
-  #         cors: true
-  # deleteProduct:
-  #   handler: src/api/handlers/rest/deleteProduct/deleteProduct.default
-  #   events:
-  #     - http:
-  #         method: delete
-  #         path: /{tenantId}/{id}
-  #         cors: true
+  updateProduct:
+    handler: src/api/handlers/rest/products/update/update.default
+    events:
+      - http:
+          method: put
+          path: /{tenantId}/{id}
+          cors: true
+  deleteProduct:
+    handler: src/api/handlers/rest/products/delete/delete.default
+    events:
+      - http:
+          method: delete
+          path: /{tenantId}/{id}
+          cors: true
   # onDatabaseUpdated:
   #   handler: src/api/handlers/events/onDatabaseUpdated/onDatabaseUpdated.default
   #   events:

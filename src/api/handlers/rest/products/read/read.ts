@@ -9,28 +9,30 @@ import * as Types from '@common/dependency-injection/types';
 import container from '@common/dependency-injection/container';
 import middy from 'middy';
 import { cors } from 'middy/middlewares';
+import eventLogger from '../../../../middlewares/eventLogger.middleware';
 import { IProductService } from '@application/services/interfaces/product.service';
-import eventLogger from '@api/middlewares/eventLogger.middleware';
 
-export const create: APIGatewayProxyHandler = async (
+export const read: APIGatewayProxyHandler = async (
   event: APIGatewayProxyEvent
 ): Promise<APIGatewayProxyResult> => {
-  if (!event.body || !event.pathParameters?.tenantId) {
+  if (!event.pathParameters) {
     return { statusCode: 400, body: '' };
   }
 
-  const { product } = JSON.parse(event.body);
-  const { tenantId } = event.pathParameters;
+  const { tenantId, id } = event.pathParameters;
   const productService = container.get<IProductService>(Types.ProductService);
-  const { item, error } = await productService.create({ ...product, tenantId });
+  const { item, error } = await productService.read(tenantId, id);
 
   if (!item) {
     return { statusCode: 400, body: JSON.stringify({ error }) };
   }
 
-  return { statusCode: 200, body: JSON.stringify({ product: item }) };
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ products: item }),
+  };
 };
 
-export default middy(create)
+export default middy(read)
   .use(eventLogger())
   .use(cors());

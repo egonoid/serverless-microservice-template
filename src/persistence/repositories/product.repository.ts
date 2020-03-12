@@ -89,7 +89,7 @@ export class ProductRepository implements IProductRepository {
       .query()
       .wherePartitionKey(tenantId)
       .whereSortKey()
-      .beginsWith(`${ModelType.PRODUCT}`)
+      .beginsWith(`${ModelType.PRODUCT}#${id}`)
       .exec() as Promise<ProductDataModel[]>;
 
     const imageModelsPromise = this.store
