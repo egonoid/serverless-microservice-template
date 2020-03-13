@@ -24,7 +24,12 @@ export const read: APIGatewayProxyHandler = async (
   const { item, error } = await productService.read(tenantId, id);
 
   if (!item) {
-    return { statusCode: 400, body: JSON.stringify({ error }) };
+    switch (error) {
+      case 'NOT_FOUND':
+        return { statusCode: 404, body: JSON.stringify({ error }) };
+      default:
+        return { statusCode: 400, body: JSON.stringify({ error }) };
+    }
   }
 
   return {

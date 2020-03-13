@@ -29,7 +29,12 @@ export const update: APIGatewayProxyHandler = async (
   });
 
   if (!item) {
-    return { statusCode: 400, body: JSON.stringify({ error }) };
+    switch (error) {
+      case 'NOT_FOUND':
+        return { statusCode: 404, body: JSON.stringify({ error }) };
+      default:
+        return { statusCode: 400, body: JSON.stringify({ error }) };
+    }
   }
 
   return { statusCode: 200, body: JSON.stringify({ product: item }) };

@@ -19,12 +19,7 @@ export default class ProductService implements IProductService {
 
   async readAll(tenantId: string): Promise<BaseServiceResponse<Product[]>> {
     const { item } = await this.repository.readAll(tenantId, 100);
-
-    if (!item) {
-      return { success: false };
-    }
-
-    return { success: true, item };
+    return { success: true, item: item ?? [] };
   }
 
   async read(
@@ -34,7 +29,7 @@ export default class ProductService implements IProductService {
     const { item } = await this.repository.read(tenantId, id);
 
     if (!item) {
-      return { success: false };
+      return { success: false, error: 'NOT_FOUND' };
     }
 
     return { success: true, item };
@@ -68,7 +63,7 @@ export default class ProductService implements IProductService {
     const { item: current } = await this.repository.read(tenantId, id);
 
     if (!current) {
-      return { success: false };
+      return { success: false, error: 'NOT_FOUND' };
     }
 
     const update: Partial<Product> = {
