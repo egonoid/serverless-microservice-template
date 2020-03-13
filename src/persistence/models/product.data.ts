@@ -1,4 +1,4 @@
-import { Model } from '@shiftcoders/dynamo-easy';
+import { Model, GSISortKey } from '@shiftcoders/dynamo-easy';
 import { BaseDataModel } from './base.data';
 
 @Model({ tableName: process.env.DYNAMO_DB_TABLE })
@@ -7,9 +7,5 @@ export class ProductDataModel extends BaseDataModel {
   description: string;
   shortDescription: string;
   subline: string;
-}
-
-export interface PendingImageDataModel {
-  image: string;
-  index: number;
+  @GSISortKey('ProductIndex') productId: string;
 }

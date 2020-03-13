@@ -1,10 +1,16 @@
-import { PartitionKey, SortKey, Model } from '@shiftcoders/dynamo-easy';
+import {
+  PartitionKey,
+  SortKey,
+  Model,
+  GSIPartitionKey,
+} from '@shiftcoders/dynamo-easy';
 
 @Model({ tableName: process.env.DYNAMO_DB_TABLE })
 export class BaseDataModel {
-  @PartitionKey() tenantId: string;
+  @PartitionKey()
+  @GSIPartitionKey('ProductIndex')
+  tenantId: string;
   @SortKey() productKey: string;
-  productId: string;
   createdAt: string;
   updatedAt: string;
   type: ModelType;

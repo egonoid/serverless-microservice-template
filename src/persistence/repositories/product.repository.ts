@@ -87,9 +87,10 @@ export class ProductRepository implements IProductRepository {
   ): Promise<BaseRepositoryResponse<Product>> {
     const productModelsPromise = this.store
       .query()
+      .index('ProductIndex')
       .wherePartitionKey(tenantId)
       .whereSortKey()
-      .beginsWith(`${ModelType.PRODUCT}#${id}`)
+      .equals(id)
       .exec() as Promise<ProductDataModel[]>;
 
     const imageModelsPromise = this.store

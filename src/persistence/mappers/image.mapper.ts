@@ -27,7 +27,6 @@ export class ImageMapper extends BaseMapper<
     const { productId, tenantId, index, createdAt, updatedAt } = data;
 
     return {
-      productId,
       tenantId,
       imageId: entity.id,
       originId: entity.originId,

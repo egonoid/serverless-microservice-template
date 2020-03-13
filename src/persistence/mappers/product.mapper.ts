@@ -46,7 +46,7 @@ export class ProductMapper extends BaseMapper<
       type: ModelType.PRODUCT,
       createdAt: entity.createdAt,
       updatedAt: entity.updatedAt,
-      productKey: `${ModelType.PRODUCT}#${entity.id}#${entity.updatedAt}`,
+      productKey: `${ModelType.PRODUCT}#${entity.updatedAt}`,
     };
   }
 }

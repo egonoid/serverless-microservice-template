@@ -146,11 +146,25 @@ resources:
             AttributeType: S
           - AttributeName: productKey
             AttributeType: S
+          - AttributeName: productId
+            AttributeType: S
         KeySchema:
           - AttributeName: tenantId
             KeyType: HASH
           - AttributeName: productKey
             KeyType: RANGE
+        GlobalSecondaryIndexes:
+          - IndexName: ProductIndex
+            KeySchema:
+              - AttributeName: tenantId
+                KeyType: HASH
+              - AttributeName: productId
+                KeyType: RANGE
+            Projection:
+              ProjectionType: ALL
+            ProvisionedThroughput:
+              ReadCapacityUnits: 1
+              WriteCapacityUnits: 1
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
