@@ -21,9 +21,7 @@ export const create: APIGatewayProxyHandler = async (
     return { statusCode: 400, body: '' };
   }
 
-  console.log((event as any).model);
-
-  const { product } = JSON.parse(event.body);
+  const product = (event as any).model;
   const { tenantId } = event.pathParameters;
   const productService = container.get<IProductService>(Types.ProductService);
   const { item, error } = await productService.create({ ...product, tenantId });

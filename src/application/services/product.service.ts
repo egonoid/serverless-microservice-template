@@ -40,11 +40,7 @@ export default class ProductService implements IProductService {
   ): Promise<BaseServiceResponse<Product>> {
     const newProduct: EntityPartial<Product> = {
       id: uuid(),
-      tenantId: request.tenantId,
-      description: request.description,
-      shortDescription: request.shortDescription,
-      subline: request.subline,
-      name: request.name,
+      ...request,
     };
 
     const { item } = await this.repository.create(newProduct);
