@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`validate UnitTestModel should throw exception on email address 1`] = `
+Object {
+  "errors": Array [
+    Object {
+      "message": "Email is not a valid email address.",
+      "source": "email",
+      "type": "ERROR_VALIDATION_EMAIL",
+    },
+  ],
+}
+`;
+
+exports[`validate UnitTestModel should throw exception on number to low 1`] = `
+Object {
+  "errors": Array [
+    Object {
+      "message": "Age must be greater than or equal to 18.",
+      "source": "age",
+      "type": "ERROR_VALIDATION_MIN_NUMBER",
+    },
+  ],
+}
+`;
+
+exports[`validate UnitTestModel should throw exception on too long firstname 1`] = `
+Object {
+  "errors": Array [
+    Object {
+      "message": "FirstName cannot exceed 100 characters.",
+      "source": "firstName",
+      "type": "ERROR_VALIDATION_MAX_STRING",
+    },
+  ],
+}
+`;
+
+exports[`validate UnitTestModel should throw exception on too short firstname 1`] = `
+Object {
+  "errors": Array [
+    Object {
+      "message": "FirstName must be at least 3 characters long.",
+      "source": "firstName",
+      "type": "ERROR_VALIDATION_MIN_STRING",
+    },
+  ],
+}
+`;

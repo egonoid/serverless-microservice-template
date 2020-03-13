@@ -10,6 +10,8 @@ import container from '@common/dependency-injection/container';
 import middy from 'middy';
 import { cors } from 'middy/middlewares';
 import { IProductService } from '@application/services/interfaces/product.service';
+import bodyValidator from '@api/middlewares/bodyValidator.middleware';
+import { productModelSchema } from '@api/models/product.model';
 import eventLogger from '@api/middlewares/eventLogger.middleware';
 
 export const create: APIGatewayProxyHandler = async (
@@ -18,6 +20,8 @@ export const create: APIGatewayProxyHandler = async (
   if (!event.body || !event.pathParameters?.tenantId) {
     return { statusCode: 400, body: '' };
   }
+
+  console.log((event as any).model);
 
   const { product } = JSON.parse(event.body);
   const { tenantId } = event.pathParameters;
@@ -33,4 +37,7 @@ export const create: APIGatewayProxyHandler = async (
 
 export default middy(create)
   .use(eventLogger())
+  .use(
+    bodyValidator({ schema: productModelSchema, payloadSelector: 'product' })
+  )
   .use(cors());

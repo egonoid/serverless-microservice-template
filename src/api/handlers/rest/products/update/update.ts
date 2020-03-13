@@ -11,6 +11,8 @@ import middy from 'middy';
 import { cors } from 'middy/middlewares';
 import { IProductService } from '@application/services/interfaces/product.service';
 import eventLogger from '@api/middlewares/eventLogger.middleware';
+import bodyValidator from '@api/middlewares/bodyValidator.middleware';
+import { productModelSchema } from '@api/models/product.model';
 
 export const update: APIGatewayProxyHandler = async (
   event: APIGatewayProxyEvent
@@ -42,4 +44,7 @@ export const update: APIGatewayProxyHandler = async (
 
 export default middy(update)
   .use(eventLogger())
+  .use(
+    bodyValidator({ schema: productModelSchema, payloadSelector: 'product' })
+  )
   .use(cors());
