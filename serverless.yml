@@ -116,9 +116,9 @@ custom:
   apiVersion: v1
   stage: ${opt:stage, self:provider.stage}
   domains:
-    dev: api-dev.qrpid.io # change this
-    test: api-test.qrpid.io # change this
-    prod: api.qrpid.io # change this
+    dev: api-dev.mydomain.com # change this
+    test: api-test.mydomain.com # change this
+    prod: api.mydomain.com # change this
   customDomain:
     basePath: ${self:custom.basePath}
     domainName: ${self:custom.domains.${self:custom.stage}}
