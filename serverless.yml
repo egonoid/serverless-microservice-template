@@ -7,6 +7,7 @@ plugins:
   - serverless-offline
   - serverless-plugin-aws-alerts
   - serverless-dynamodb-local
+  - serverless-domain-manager
 
 provider:
   name: aws
