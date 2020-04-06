@@ -13,8 +13,18 @@ const bodyValidator: Middleware<
         throw new Error('Schema is missing.');
       }
 
+      let body;
+
+      try {
+        body = JSON.parse(handler.event.body);
+      } catch {
+        return handler.callback(null, {
+          statusCode: 400,
+          body: JSON.stringify({ message: 'INVALID_REQUEST' }),
+        });
+      }
+
       const { schema, payloadSelector } = config;
-      const body = JSON.parse(handler.event.body);
       const payload = payloadSelector ? body[payloadSelector] : body;
 
       validate(payload, schema)
@@ -26,7 +36,7 @@ const bodyValidator: Middleware<
           handler.callback(null, {
             statusCode: 400,
             body: JSON.stringify({
-              message: 'Invalid request.',
+              message: 'INVALID_REQUEST',
               errors: err.errors,
             }),
           })
