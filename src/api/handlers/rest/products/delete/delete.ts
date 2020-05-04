@@ -10,7 +10,7 @@ import container from '@common/dependency-injection/container';
 import middy from 'middy';
 import { cors } from 'middy/middlewares';
 import { IProductService } from '@application/services/interfaces/product.service';
-import eventLogger from '@api/middlewares/eventLogger.middleware';
+import { eventLogger } from '@egonoid/api-middlewares';
 
 export const del: APIGatewayProxyHandler = async (
   event: APIGatewayProxyEvent
@@ -27,6 +27,4 @@ export const del: APIGatewayProxyHandler = async (
   return { statusCode: 200, body: '' };
 };
 
-export default middy(del)
-  .use(eventLogger())
-  .use(cors());
+export default middy(del).use(eventLogger()).use(cors());

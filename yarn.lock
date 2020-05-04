@@ -286,6 +286,13 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@egonoid/api-middlewares@^0.0.8":
+  version "0.0.8"
+  resolved "https://npm.pkg.github.com/download/@egonoid/api-middlewares/0.0.8/61b80fba6cc0164f00fbcfdaba14be0039bb0e45d2d05c173fa530cf32b5ae9f#fae8ef644a701929df1478202919cae66c29c131"
+  integrity sha512-615mTlwL+rm1MyQf5PnefPIRWqlGcFxXzYTqF5Wve/ofa/wISsMNg5l+hI2vw0b9iOR1zzS54Du3on+Q5VAFHg==
+  dependencies:
+    middy "^0.36.0"
+
 "@hapi/accept@^3.2.4":
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/@hapi/accept/-/accept-3.2.4.tgz#687510529493fe1d7d47954c31aff360d9364bd1"
@@ -4795,6 +4802,25 @@ middy@^0.34.0:
   version "0.34.0"
   resolved "https://registry.yarnpkg.com/middy/-/middy-0.34.0.tgz#88296004bdefeaea16ec69c35e408621c910d880"
   integrity sha512-+YQMxANug4DYGC2Pr4ueCwKaZKoXQdyzXLLUu0us8Q99PboccvJ/l4gn2+WvkxBdC99rYoL6yPxCTr74rcpJDQ==
+  dependencies:
+    "@types/aws-lambda" "^8.10.45"
+    "@types/http-errors" "^1.6.3"
+    ajv "^6.9.1"
+    ajv-i18n "^3.4.0"
+    ajv-keywords "^3.4.1"
+    busboy "^0.3.1"
+    content-type "^1.0.4"
+    http-errors "^1.7.3"
+    json-mask "^0.3.8"
+    negotiator "^0.6.1"
+    once "^1.4.0"
+    qs "^6.6.0"
+    querystring "^0.2.0"
+
+middy@^0.36.0:
+  version "0.36.0"
+  resolved "https://registry.yarnpkg.com/middy/-/middy-0.36.0.tgz#f5f2e461b2f7260e4aadd0e53ff4c828e9f7e7ba"
+  integrity sha512-IhIVEZQs8mxcvPHfzAQpwINj4R+aVgeCcUL9KS+OYE5Vy4hKhZtVl/1yfI8dSvDAfRBoRp6N/Gi04pxQM4vAzw==
   dependencies:
     "@types/aws-lambda" "^8.10.45"
     "@types/http-errors" "^1.6.3"

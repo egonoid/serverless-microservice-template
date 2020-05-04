@@ -9,7 +9,7 @@ import * as Types from '@common/dependency-injection/types';
 import container from '@common/dependency-injection/container';
 import middy from 'middy';
 import { cors } from 'middy/middlewares';
-import eventLogger from '../../../../middlewares/eventLogger.middleware';
+import { eventLogger } from '@egonoid/api-middlewares';
 import { IProductService } from '@application/services/interfaces/product.service';
 
 export const readAll: APIGatewayProxyHandler = async (
@@ -33,6 +33,4 @@ export const readAll: APIGatewayProxyHandler = async (
   };
 };
 
-export default middy(readAll)
-  .use(eventLogger())
-  .use(cors());
+export default middy(readAll).use(eventLogger()).use(cors());

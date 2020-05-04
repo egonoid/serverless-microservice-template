@@ -10,7 +10,7 @@ import * as Types from '@common/dependency-injection/types';
 import container from '@common/dependency-injection/container';
 import middy from 'middy';
 import { cors } from 'middy/middlewares';
-import eventLogger from '../../../middlewares/eventLogger.middleware';
+import { eventLogger } from '@egonoid/api-middlewares';
 
 export const ping: APIGatewayProxyHandler = async (
   event: APIGatewayProxyEvent
@@ -28,6 +28,4 @@ export const ping: APIGatewayProxyHandler = async (
   };
 };
 
-export default middy(ping)
-  .use(eventLogger())
-  .use(cors());
+export default middy(ping).use(eventLogger()).use(cors());
