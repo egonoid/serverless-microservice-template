@@ -12,6 +12,7 @@ import { cors } from 'middy/middlewares';
 import { IProductService } from '@application/services/interfaces/product.service';
 import { productModelSchema } from '@api/models/product.model';
 import { eventLogger, bodyValidator } from '@egonoid/api-middlewares';
+import { handleError } from '@api/extensions/error.extensions';
 
 export const create: APIGatewayProxyHandler = async (
   event: APIGatewayProxyEvent
@@ -26,7 +27,7 @@ export const create: APIGatewayProxyHandler = async (
   const { item, error } = await productService.create({ ...product, tenantId });
 
   if (!item) {
-    return { statusCode: 400, body: JSON.stringify({ error }) };
+    return handleError(error);
   }
 
   return { statusCode: 200, body: JSON.stringify({ product: item }) };

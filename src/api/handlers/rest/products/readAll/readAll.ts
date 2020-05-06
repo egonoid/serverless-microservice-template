@@ -11,6 +11,7 @@ import middy from 'middy';
 import { cors } from 'middy/middlewares';
 import { eventLogger } from '@egonoid/api-middlewares';
 import { IProductService } from '@application/services/interfaces/product.service';
+import { handleError } from '@api/extensions/error.extensions';
 
 export const readAll: APIGatewayProxyHandler = async (
   event: APIGatewayProxyEvent
@@ -24,7 +25,7 @@ export const readAll: APIGatewayProxyHandler = async (
   const { item, error } = await productService.readAll(tenantId);
 
   if (!item) {
-    return { statusCode: 400, body: JSON.stringify({ error }) };
+    return handleError(error);
   }
 
   return {
