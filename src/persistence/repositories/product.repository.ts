@@ -3,19 +3,24 @@ import { Product } from '@domain/product.entity';
 import { DynamoStore } from '@shiftcoders/dynamo-easy';
 import { ProductDataModel } from '@persistence/models/product.data';
 import { inject, injectable } from 'inversify';
-import { ModelType } from '@persistence/models/base.data';
-import { ImageDataModel } from '@persistence/models/image.data';
 import { IProductRepository } from './interfaces/product.repository';
 import { DITypes } from '@common/dependency-injection';
 import { ProductMapper } from '@persistence/mappers/product.mapper';
 import { ImageMapper } from '@persistence/mappers/image.mapper';
 import { EntityPartial } from '@domain/base.entity';
+import {
+  READ_ALL_INDEX,
+  ProductStoreDataModel,
+  ModelType,
+} from '@persistence/models';
+import { filterModels } from '@persistence/extensions/repository.extensions';
+import { ImageDataModel } from '@persistence/models/image.data';
 
 @injectable()
 export class ProductRepository implements IProductRepository {
   constructor(
     @inject(DITypes.DatabaseStore)
-    private store: DynamoStore<ProductDataModel | ImageDataModel>,
+    private store: DynamoStore<ProductStoreDataModel>,
     @inject(DITypes.ProductMapper)
     private productMapper: ProductMapper,
     @inject(DITypes.ImageMapper)
@@ -63,6 +68,7 @@ export class ProductRepository implements IProductRepository {
   ): Promise<BaseRepositoryResponse<Product[]>> {
     const productModels = (await this.store
       .query()
+      .index(READ_ALL_INDEX)
       .wherePartitionKey(tenantId)
       .whereSortKey()
       .beginsWith(`${ModelType.PRODUCT}`)
@@ -71,7 +77,7 @@ export class ProductRepository implements IProductRepository {
       .descending()
       .exec()) as ProductDataModel[];
 
-    const products = productModels.map(model =>
+    const products = productModels.map((model) =>
       this.productMapper.mapToEntity(model)
     );
 
@@ -85,30 +91,26 @@ export class ProductRepository implements IProductRepository {
     tenantId: string,
     id: string
   ): Promise<BaseRepositoryResponse<Product>> {
-    const productModelsPromise = this.store
-      .query()
-      .index('ProductIndex')
-      .wherePartitionKey(tenantId)
-      .whereSortKey()
-      .equals(id)
-      .exec() as Promise<ProductDataModel[]>;
-
-    const imageModelsPromise = this.store
+    const models = await this.store
       .query()
       .wherePartitionKey(tenantId)
       .whereSortKey()
-      .beginsWith(`${ModelType.IMAGE}#${id}`)
-      .ascending()
-      .exec() as Promise<ImageDataModel[]>;
+      .beginsWith(`${id}`)
+      .exec();
 
-    const [productModels, imageModels] = await Promise.all([
-      productModelsPromise,
-      imageModelsPromise,
-    ]);
+    const productModel = models.find((m) =>
+      m.itemKey.startsWith(`${id}#${ModelType.PRODUCT}`)
+    ) as ProductDataModel;
 
-    const product = productModels[0]
-      ? this.productMapper.mapToEntity(productModels[0], imageModels)
-      : undefined;
+    if (!productModel) {
+      return { success: false };
+    }
+
+    const imageModels = filterModels<ImageDataModel>(models, (m) =>
+      m.itemKey.startsWith(`${id}#${ModelType.IMAGE}`)
+    );
+
+    const product = this.productMapper.mapToEntity(productModel, imageModels);
 
     return {
       success: true,

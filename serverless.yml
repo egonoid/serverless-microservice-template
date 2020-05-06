@@ -150,24 +150,31 @@ resources:
         AttributeDefinitions:
           - AttributeName: tenantId
             AttributeType: S
-          - AttributeName: productKey
+          - AttributeName: itemKey
             AttributeType: S
-          - AttributeName: productId
+          - AttributeName: sortKey
             AttributeType: S
         KeySchema:
           - AttributeName: tenantId
             KeyType: HASH
-          - AttributeName: productKey
+          - AttributeName: itemKey
             KeyType: RANGE
         GlobalSecondaryIndexes:
-          - IndexName: ProductIndex
+          - IndexName: ReadAllIndex
             KeySchema:
               - AttributeName: tenantId
                 KeyType: HASH
-              - AttributeName: productId
+              - AttributeName: sortKey
                 KeyType: RANGE
             Projection:
-              ProjectionType: ALL
+              ProjectionType: INCLUDE
+              NonKeyAttributes:
+                - id
+                - name
+                - shortDescription
+                - subline
+                - createdAt
+                - updatedAt
             ProvisionedThroughput:
               ReadCapacityUnits: 1
               WriteCapacityUnits: 1

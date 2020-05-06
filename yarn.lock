@@ -2,6 +2,13 @@
 # yarn lockfile v1
 
 
+"@aws/dynamodb-auto-marshaller@^0.7.1":
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/@aws/dynamodb-auto-marshaller/-/dynamodb-auto-marshaller-0.7.1.tgz#70676c056e4ecb798c08ec2e398a3d93e703858d"
+  integrity sha512-LeURlf6/avrfFo9+4Yht9J3CUTJ72yoBpm1FOUmlexuHNW4Ka61tG30w3ZDCXXXmCO2rG0k3ywAgNJEo3WPbyw==
+  dependencies:
+    tslib "^1.8.1"
+
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.5.5":
   version "7.5.5"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.5.5.tgz#bc0782f6d69f7b7d49531219699b988f669a8f9d"

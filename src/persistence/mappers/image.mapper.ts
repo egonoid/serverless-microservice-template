@@ -1,8 +1,8 @@
 import { Image } from '@domain/image.entity';
-import { ModelType } from '@persistence/models/base.data';
 import { ImageDataModel } from '@persistence/models/image.data';
 import { BaseMapper } from '@common/baseMapper';
 import { injectable } from 'inversify';
+import { ModelType } from '@persistence/models';
 
 @injectable()
 export class ImageMapper extends BaseMapper<
@@ -13,7 +13,7 @@ export class ImageMapper extends BaseMapper<
 > {
   mapToEntity(model: ImageDataModel): Image {
     return {
-      id: model.imageId,
+      id: model.id,
       originId: model.originId,
       ext: model.ext,
     };
@@ -28,11 +28,13 @@ export class ImageMapper extends BaseMapper<
 
     return {
       tenantId,
-      imageId: entity.id,
+      id: entity.id,
       originId: entity.originId,
       ext: entity.ext,
       type: ModelType.IMAGE,
-      productKey: `${ModelType.IMAGE}#${productId}#${index}`,
+      itemKey: `${productId}#${ModelType.IMAGE}#${index}`,
+      sortKey: `${ModelType.IMAGE}#${updatedAt}#${entity.id}`,
+      productId,
       createdAt,
       updatedAt,
     };

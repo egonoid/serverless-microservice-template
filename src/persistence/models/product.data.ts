@@ -1,4 +1,4 @@
-import { Model, GSISortKey } from '@shiftcoders/dynamo-easy';
+import { Model } from '@shiftcoders/dynamo-easy';
 import { BaseDataModel } from './base.data';
 
 @Model({ tableName: process.env.DYNAMO_DB_TABLE })
@@ -7,5 +7,4 @@ export class ProductDataModel extends BaseDataModel {
   description: string;
   shortDescription: string;
   subline: string;
-  @GSISortKey('ProductIndex') productId: string;
 }

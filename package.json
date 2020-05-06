@@ -13,6 +13,7 @@
     "build": "sls webpack -s dev"
   },
   "dependencies": {
+    "@aws/dynamodb-auto-marshaller": "^0.7.1",
     "@egonoid/api-middlewares": "^0.0.10",
     "@shiftcoders/dynamo-easy": "^5.6.0",
     "aws-sdk": "^2.654.0",
