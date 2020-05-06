@@ -300,10 +300,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@egonoid/api-middlewares@^0.0.10":
-  version "0.0.10"
-  resolved "https://npm.pkg.github.com/download/@egonoid/api-middlewares/0.0.10/ffeb25cd05a2b42051fbb6d6a9844f8d9d7b51b42eb1afc221add04a0f9da92d#178ed135fe303b5fcd025c7f9ac998c877ae85ed"
-  integrity sha512-+Vc9yx7BfjomfxR58EGndpKTz97plsQ1E0pflLePvPSB7lnlTdto6yWz+u3llzgfckXcRGlSHyFQnoIuQY/7Nw==
+"@egonoid/api-middlewares@^0.1.0":
+  version "0.1.0"
+  resolved "https://npm.pkg.github.com/download/@egonoid/api-middlewares/0.1.0/4044e710354fa7f6ea92492d9a9ff07fbe443a4da792742d92970fca9ae8eb4c#66c5f566b12e5ef9c8d45cda2d4e84682c7d13ea"
+  integrity sha512-3PMm0XVLt2rOls0cX+6NfkDI5TIaFpDJ0RaTpYVe1Nigg+/L/0ngdMUtf/gqhR3qWj5jC83JhnhYm8T2LICWXA==
   dependencies:
     middy "^0.36.0"
     yup "^0.28.5"
