@@ -207,6 +207,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.9.6":
+  version "7.9.6"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.9.6.tgz#a9102eb5cadedf3f31d08a9ecf294af7827ea29f"
+  integrity sha512-64AF1xY3OAkFHqOb9s4jpgk1Mm5vDZ4L3acHvAml+53nO1XbXLuDodsVpO4OIUsmemlUHMxNdYMNJmsvOwLrvQ==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/template@^7.7.0":
   version "7.7.0"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.7.0.tgz#4fadc1b8e734d97f56de39c77de76f2562e597d0"
@@ -286,12 +293,13 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@egonoid/api-middlewares@^0.0.8":
-  version "0.0.8"
-  resolved "https://npm.pkg.github.com/download/@egonoid/api-middlewares/0.0.8/61b80fba6cc0164f00fbcfdaba14be0039bb0e45d2d05c173fa530cf32b5ae9f#fae8ef644a701929df1478202919cae66c29c131"
-  integrity sha512-615mTlwL+rm1MyQf5PnefPIRWqlGcFxXzYTqF5Wve/ofa/wISsMNg5l+hI2vw0b9iOR1zzS54Du3on+Q5VAFHg==
+"@egonoid/api-middlewares@^0.0.10":
+  version "0.0.10"
+  resolved "https://npm.pkg.github.com/download/@egonoid/api-middlewares/0.0.10/ffeb25cd05a2b42051fbb6d6a9844f8d9d7b51b42eb1afc221add04a0f9da92d#178ed135fe303b5fcd025c7f9ac998c877ae85ed"
+  integrity sha512-+Vc9yx7BfjomfxR58EGndpKTz97plsQ1E0pflLePvPSB7lnlTdto6yWz+u3llzgfckXcRGlSHyFQnoIuQY/7Nw==
   dependencies:
     middy "^0.36.0"
+    yup "^0.28.5"
 
 "@hapi/accept@^3.2.4":
   version "3.2.4"
@@ -5680,7 +5688,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.3"
 
-property-expr@^2.0.0:
+property-expr@^2.0.0, property-expr@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/property-expr/-/property-expr-2.0.2.tgz#fff2a43919135553a3bc2fdd94bdb841965b2330"
   integrity sha512-bc/5ggaYZxNkFKj374aLbEDqVADdYaLcFo8XBkishUWbaAdjlphaBFns9TvRA2pUseVL/wMFmui9X3IdNDU37g==
@@ -7539,6 +7547,19 @@ yup@^0.28.3:
     lodash "^4.17.15"
     lodash-es "^4.17.11"
     property-expr "^2.0.0"
+    synchronous-promise "^2.0.10"
+    toposort "^2.0.2"
+
+yup@^0.28.5:
+  version "0.28.5"
+  resolved "https://registry.yarnpkg.com/yup/-/yup-0.28.5.tgz#85cabb4000d3623ef69be81551190692e631a8a5"
+  integrity sha512-7JZcvpUGUxMKoaEtcoMEM8lCWRaueGNH/A3EhL/UWqfbFm3uloiI+x59Yq4nzhbbYWUTwAsCteaZOJ+VbqI1uw==
+  dependencies:
+    "@babel/runtime" "^7.9.6"
+    fn-name "~3.0.0"
+    lodash "^4.17.15"
+    lodash-es "^4.17.11"
+    property-expr "^2.0.2"
     synchronous-promise "^2.0.10"
     toposort "^2.0.2"
 

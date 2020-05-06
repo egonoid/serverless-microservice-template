@@ -10,9 +10,8 @@ import container from '@common/dependency-injection/container';
 import middy from 'middy';
 import { cors } from 'middy/middlewares';
 import { IProductService } from '@application/services/interfaces/product.service';
-import bodyValidator from '@api/middlewares/bodyValidator.middleware';
 import { productModelSchema } from '@api/models/product.model';
-import { eventLogger } from '@egonoid/api-middlewares';
+import { eventLogger, bodyValidator } from '@egonoid/api-middlewares';
 
 export const create: APIGatewayProxyHandler = async (
   event: APIGatewayProxyEvent
