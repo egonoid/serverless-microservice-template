@@ -15,6 +15,7 @@ provider:
   region: eu-central-1
   stage: ${opt:stage, 'dev'}
   profile: ${self:custom.profiles.${self:provider.stage}}
+  logRetentionInDays: 14
   environment:
     ACCOUNT_ID: '#{AWS::AccountId}'
     REGION: '#{AWS::Region}'
