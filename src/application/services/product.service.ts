@@ -4,7 +4,7 @@ import {
   IUpdateProductRequest,
 } from './interfaces/product.service';
 import { injectable, inject } from 'inversify';
-import uuid from 'uuid/v4';
+import { v4 as uuid } from 'uuid';
 import * as Types from '../../common/dependency-injection/types';
 import { Product } from '../../domain/product.entity';
 import { IProductRepository } from '@persistence/repositories/interfaces/product.repository';

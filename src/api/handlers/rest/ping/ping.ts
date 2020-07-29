@@ -11,6 +11,7 @@ import container from '@common/dependency-injection/container';
 import middy from 'middy';
 import { cors } from 'middy/middlewares';
 import { eventLogger } from '@egonoid/api-middlewares';
+import { v4 as uuid } from 'uuid';
 
 export const ping: APIGatewayProxyHandler = async (
   event: APIGatewayProxyEvent
@@ -24,6 +25,7 @@ export const ping: APIGatewayProxyHandler = async (
     statusCode: 200,
     body: JSON.stringify({
       message: result,
+      uuid: uuid(),
     }),
   };
 };
