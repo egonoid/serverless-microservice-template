@@ -6,7 +6,9 @@ export interface IRepository<T extends BaseEntity> {
   readAll(
     tenantId: string,
     limit: number,
-    cursor?: any
+    scanIndexForward?: boolean,
+    beforeCursor?: string,
+    afterCursor?: string
   ): Promise<BaseRepositoryResponse<T[]>>;
 
   read(tenantId: string, id: string): Promise<BaseRepositoryResponse<T>>;
@@ -15,7 +17,9 @@ export interface IRepository<T extends BaseEntity> {
     tenantId: string,
     limit: number,
     search: string,
-    cursor?: any
+    scanIndexForward?: boolean,
+    beforeCursor?: string,
+    afterCursor?: string
   ): Promise<BaseRepositoryResponse<T[]>>;
 
   update(
@@ -31,4 +35,6 @@ export interface BaseRepositoryResponse<T> {
   success: boolean;
   error?: any;
   item?: T;
+  startCursor?: string;
+  endCursor?: string;
 }
