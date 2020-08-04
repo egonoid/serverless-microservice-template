@@ -13,8 +13,13 @@ import {
   ProductStoreDataModel,
   ModelType,
 } from '@persistence/models';
-import { filterModels } from '@persistence/extensions/repository.extensions';
+import {
+  filterModels,
+  sortModels,
+  createCursor,
+} from '@persistence/extensions/repository.extensions';
 import { ImageDataModel } from '@persistence/models/image.data';
+import { SortType } from '@common/enums/sortType.enum';
 
 @injectable()
 export class ProductRepository implements IProductRepository {
@@ -64,26 +69,54 @@ export class ProductRepository implements IProductRepository {
   async readAll(
     tenantId: string,
     limit: number,
-    cursor?: any
+    scanIndexForward = true,
+    beforeCursor?: string,
+    afterCursor?: string
   ): Promise<BaseRepositoryResponse<Product[]>> {
-    const productModels = (await this.store
+    const cursor = beforeCursor ?? afterCursor;
+    scanIndexForward = beforeCursor ? !scanIndexForward : scanIndexForward;
+
+    const request = this.store
       .query()
       .index(READ_ALL_INDEX)
       .wherePartitionKey(tenantId)
       .whereSortKey()
       .beginsWith(`${ModelType.PRODUCT}`)
-      .exclusiveStartKey(cursor)
-      .limit(limit)
-      .descending()
-      .exec()) as ProductDataModel[];
+      .exclusiveStartKey(cursor ? JSON.parse(cursor) : undefined)
+      .limit(limit + 1);
 
-    const products = productModels.map((model) =>
+    if (scanIndexForward) {
+      request.ascending();
+    } else {
+      request.descending();
+    }
+
+    const { Items } = await request.execFullResponse();
+
+    let models = Items.slice(0, limit) as ProductDataModel[];
+
+    if (beforeCursor && !scanIndexForward) {
+      models = sortModels<ProductDataModel>(models, 'sortKey', SortType.ASC);
+    } else if (beforeCursor && scanIndexForward) {
+      models = sortModels<ProductDataModel>(models, 'sortKey', SortType.DESC);
+    }
+
+    const products = models.map((model) =>
       this.productMapper.mapToEntity(model)
     );
 
     return {
       success: true,
       item: products,
+      startCursor:
+        (afterCursor && models[0]) || (beforeCursor && Items.length > limit)
+          ? createCursor(models[0])
+          : undefined,
+      endCursor:
+        (beforeCursor && models[models.length - 1]) ||
+        (afterCursor && Items.length > limit)
+          ? createCursor(models[models.length - 1])
+          : undefined,
     };
   }
 

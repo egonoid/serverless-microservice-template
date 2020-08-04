@@ -10,6 +10,10 @@ import { Product } from '../../domain/product.entity';
 import { IProductRepository } from '@persistence/repositories/interfaces/product.repository';
 import { BaseServiceResponse } from './interfaces/base';
 import { EntityPartial } from '@domain/base.entity';
+import { SortType } from '@common/enums/sortType.enum';
+import { BaseRepositoryResponse } from '@persistence/repositories/interfaces/repository';
+import { deserializeCursor } from '@common/util/deserializeCursor.util';
+import { serializeCursor } from '@common/util/serializeCursor.util';
 
 @injectable()
 export default class ProductService implements IProductService {
@@ -17,9 +21,47 @@ export default class ProductService implements IProductService {
     @inject(Types.ProductRepository) private repository: IProductRepository
   ) {}
 
-  async readAll(tenantId: string): Promise<BaseServiceResponse<Product[]>> {
-    const { item } = await this.repository.readAll(tenantId, 100);
-    return { success: true, item: item ?? [] };
+  async readAll(
+    tenantId: string,
+    limit: number = 100,
+    sort: SortType = SortType.DESC,
+    afterCursor?: string,
+    beforeCursor?: string,
+    search?: string
+  ): Promise<BaseServiceResponse<Product[]>> {
+    let response: BaseRepositoryResponse<Product[]>;
+
+    if (search) {
+      response = await this.repository.search(
+        tenantId,
+        limit,
+        search,
+        sort === SortType.ASC,
+        beforeCursor && deserializeCursor(beforeCursor),
+        afterCursor && deserializeCursor(afterCursor)
+      );
+    } else {
+      response = await this.repository.readAll(
+        tenantId,
+        limit,
+        sort === SortType.ASC,
+        beforeCursor && deserializeCursor(beforeCursor),
+        afterCursor && deserializeCursor(afterCursor)
+      );
+    }
+
+    const { item, startCursor, endCursor } = response;
+
+    if (!item) {
+      return { success: false };
+    }
+
+    return {
+      success: true,
+      item,
+      startCursor: startCursor && serializeCursor(startCursor),
+      endCursor: endCursor && serializeCursor(endCursor),
+    };
   }
 
   async read(

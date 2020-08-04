@@ -1,8 +1,16 @@
 import { Product } from '../../../domain/product.entity';
 import { BaseServiceResponse } from './base';
+import { SortType } from '@common/enums/sortType.enum';
 
 export interface IProductService {
-  readAll(tenantId: string): Promise<BaseServiceResponse<Product[]>>;
+  readAll(
+    tenantId: string,
+    limit?: number,
+    sort?: SortType,
+    afterCursor?: string,
+    beforeCursor?: string,
+    search?: string
+  ): Promise<BaseServiceResponse<Product[]>>;
   read(tenantId: string, id: string): Promise<BaseServiceResponse<Product>>;
   create(request: ICreateProductRequest): Promise<BaseServiceResponse<Product>>;
   update(request: IUpdateProductRequest): Promise<BaseServiceResponse<Product>>;

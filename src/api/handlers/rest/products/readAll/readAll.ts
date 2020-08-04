@@ -12,17 +12,46 @@ import { cors } from 'middy/middlewares';
 import { eventLogger } from '@egonoid/api-middlewares';
 import { IProductService } from '@application/services/interfaces/product.service';
 import { handleError } from '@api/extensions/error.extensions';
+import { SortType } from '@common/enums/sortType.enum';
 
 export const readAll: APIGatewayProxyHandler = async (
   event: APIGatewayProxyEvent
 ): Promise<APIGatewayProxyResult> => {
   if (!event.pathParameters) {
-    return { statusCode: 400, body: '' };
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ error: 'INVALID_REQUEST' }),
+    };
   }
 
   const { tenantId } = event.pathParameters;
+  const { limit: limitParam, before, after, search, sort: sortParam } =
+    event.queryStringParameters ?? {};
   const productService = container.get<IProductService>(Types.ProductService);
-  const { item, error } = await productService.readAll(tenantId);
+  const limit = limitParam ? parseFloat(limitParam) : undefined;
+
+  if (limitParam && !limit) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ message: 'INVALID_REQUEST' }),
+    };
+  }
+
+  const sort: SortType | undefined =
+    sortParam === 'ASC'
+      ? SortType.ASC
+      : sortParam === 'DESC'
+      ? SortType.DESC
+      : undefined;
+
+  const { item, startCursor, endCursor, error } = await productService.readAll(
+    tenantId,
+    limit,
+    sort,
+    after,
+    before,
+    search
+  );
 
   if (!item) {
     return handleError(error);
@@ -30,7 +59,7 @@ export const readAll: APIGatewayProxyHandler = async (
 
   return {
     statusCode: 200,
-    body: JSON.stringify({ products: item }),
+    body: JSON.stringify({ products: item, startCursor, endCursor }),
   };
 };
 

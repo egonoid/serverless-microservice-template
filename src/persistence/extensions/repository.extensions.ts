@@ -2,13 +2,12 @@ import { DynamoStore } from '@shiftcoders/dynamo-easy';
 import { BaseDataModel } from '@persistence/models/base.data';
 import { Marshaller } from '@aws/dynamodb-auto-marshaller';
 import { SortType } from '@common/enums/sortType.enum';
-import { ProductStoreDataModel } from '@persistence/models';
 
 const marshaller = new Marshaller();
 
-export const batchPut = async (
-  store: DynamoStore<ProductStoreDataModel>,
-  models: ProductStoreDataModel[]
+export const batchPut = async <T extends BaseDataModel>(
+  store: DynamoStore<T>,
+  models: T[]
 ) => {
   for (let i = 0; i < models.length; i += 25) {
     await store
@@ -18,9 +17,9 @@ export const batchPut = async (
   }
 };
 
-export const batchDelete = async (
-  store: DynamoStore<ProductStoreDataModel>,
-  models: ProductStoreDataModel[]
+export const batchDelete = async <T extends BaseDataModel>(
+  store: DynamoStore<T>,
+  models: T[]
 ) => {
   for (let i = 0; i < models.length; i += 25) {
     await store
@@ -30,23 +29,23 @@ export const batchDelete = async (
   }
 };
 
-export const filterModels = <TMODEL extends BaseDataModel>(
+export const filterModels = <T extends BaseDataModel>(
   models: BaseDataModel[],
-  cb: (item: TMODEL) => boolean
-): TMODEL[] => {
-  return models.filter((m) => cb(m as TMODEL)) as TMODEL[];
+  cb: (item: T) => boolean
+): T[] => {
+  return models.filter((m) => cb(m as T)) as T[];
 };
 
-export const createCursor = (item: ProductStoreDataModel): string => {
-  const { tenantId, itemKey, sortKey: productSortKey } = item;
+export const createCursor = <T extends BaseDataModel>(item: T): string => {
+  const { tenantId, itemKey, sortKey } = item;
   const cursor = JSON.stringify(
-    marshaller.marshallItem({ tenantId, itemKey, productSortKey })
+    marshaller.marshallItem({ tenantId, itemKey, sortKey })
   );
 
   return cursor;
 };
 
-export const sortModels = <T>(
+export const sortModels = <T extends BaseDataModel>(
   models: T[],
   sortProperty: keyof T,
   sortType: SortType
