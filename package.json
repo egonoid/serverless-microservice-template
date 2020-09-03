@@ -4,8 +4,8 @@
   "description": "Template starter project for egonoid serverless microservices.",
   "main": "src/handlers/ping.ts",
   "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch",
+    "test": "jest --watch",
+    "test:single": "CI=true jest --watchAll=false --verbose --colors",
     "lint": "tslint --project .",
     "lint:fix": "tslint -c tslint.json 'src/**/*.ts' --fix",
     "format": "prettier --write 'src/**/*.{js,json,yml,ts}'",
