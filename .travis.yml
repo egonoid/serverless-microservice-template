@@ -5,6 +5,7 @@ cache: yarn
 before_install:
   - npm config set //npm.pkg.github.com/:_authToken=$GITHUB_TOKEN
 script:
+  - yarn global add serverless
   - yarn
   - yarn build
   - yarn test:single
