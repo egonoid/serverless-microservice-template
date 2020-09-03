@@ -5,9 +5,8 @@ module.exports = {
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
   extends: [
     'eslint:recommended',
-    // 'plugin:@typescript-eslint/recommended',
-    // 'prettier/@typescript-eslint',
-    // 'plugin:prettier/recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
   ],
   env: {
     browser: false,
@@ -28,7 +27,7 @@ module.exports = {
     '@typescript-eslint/interface-name-prefix': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     'no-console': 'off',
-    'no-unused-vars': 'off',
+    // 'no-unused-vars': 'warn',
   },
   overrides: [
     // Override some TypeScript rules just for .js files
