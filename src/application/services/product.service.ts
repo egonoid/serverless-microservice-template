@@ -23,7 +23,7 @@ export default class ProductService implements IProductService {
 
   async readAll(
     tenantId: string,
-    limit: number = 100,
+    limit = 100,
     sort: SortType = SortType.DESC,
     afterCursor?: string,
     beforeCursor?: string,
