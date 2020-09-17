@@ -1560,7 +1560,7 @@ aws-sdk-mock@^5.1.0:
     sinon "^9.0.1"
     traverse "^0.6.6"
 
-aws-sdk@^2.490.0, aws-sdk@^2.637.0, aws-sdk@^2.7.0, aws-sdk@^2.752.0:
+aws-sdk@^2.637.0, aws-sdk@^2.7.0, aws-sdk@^2.752.0:
   version "2.752.0"
   resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.752.0.tgz#0d6e38bd43f023f44ad5db66be6f6afc0d9a1278"
   integrity sha512-0/8Pt8/qEgxt02IEvRjinR3cEj1YmmPlJqie4NhCWmmXmI4wDmEb5Em3A2XvU1dNwS0fpQEcuRcaQ/pWi/mScg==
@@ -2016,7 +2016,7 @@ chai@^4.2.0:
     pathval "^1.1.0"
     type-detect "^4.0.5"
 
-chalk@^2.0.0, chalk@^2.0.1, chalk@^2.3.0, chalk@^2.4.1, chalk@^2.4.2:
+chalk@^2.0.0, chalk@^2.0.1, chalk@^2.3.0, chalk@^2.4.2:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.4.2.tgz#cd42541677a54333cf541a49108c1432b44c9424"
   integrity sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==
@@ -6416,13 +6416,13 @@ serialize-javascript@^4.0.0:
   dependencies:
     randombytes "^2.1.0"
 
-serverless-domain-manager@^4.2.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/serverless-domain-manager/-/serverless-domain-manager-4.2.0.tgz#f6f5dd8c8dbb558a2008ebc69466b56fe8ef42b8"
-  integrity sha512-FdWZyDC2v/rC/PCfMHoEqcL2u0OdgHAPGLW8KIBeiS83xgMEtyP7A4+ispBtQvZ4nsfJNyPiz4Bv5eO1RdMpXw==
+serverless-domain-manager@^4.2.2:
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/serverless-domain-manager/-/serverless-domain-manager-4.2.2.tgz#3a24a4d23c8b5095823254ba65c86d31e28b9531"
+  integrity sha512-owVrxMpWyLRqJcnxOZbhsVYCq8izg4+xPC58vntONOJ9oyiv1fWubHoWsJVjIv5+wxGLYlY97hSjOftM7fYATw==
   dependencies:
-    aws-sdk "^2.490.0"
-    chalk "^2.4.1"
+    aws-sdk "^2.752.0"
+    chalk "^2.4.2"
 
 serverless-dynamodb-local@^0.2.39:
   version "0.2.39"
