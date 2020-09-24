@@ -41,7 +41,7 @@
     "jest": "^26.4.2",
     "lint-staged": "^10.3.0",
     "prettier": "^2.1.1",
-    "serverless-domain-manager": "^4.2.0",
+    "serverless-domain-manager": "^5.0.0",
     "serverless-dynamodb-local": "^0.2.39",
     "serverless-offline": "5.12.1",
     "serverless-plugin-aws-alerts": "^1.6.1",
