@@ -16,7 +16,7 @@
   "dependencies": {
     "@aws/dynamodb-auto-marshaller": "^0.7.1",
     "@egonoid/api-middlewares": "^0.1.1",
-    "@shiftcoders/dynamo-easy": "^7.0.0",
+    "@shiftcoders/dynamo-easy": "^7.1.0",
     "aws-sdk": "^2.752.0",
     "inversify": "^5.0.1",
     "middy": "^0.36.0",

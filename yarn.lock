@@ -839,10 +839,10 @@
     "@types/lodash" "^4.14.123"
     lodash "^4.17.11"
 
-"@shiftcoders/dynamo-easy@^7.0.0":
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/@shiftcoders/dynamo-easy/-/dynamo-easy-7.0.0.tgz#1f041119a28554ed2d7c3a20440d0daabc659984"
-  integrity sha512-RJswrAQZ5aKaMCBjUVk677EF8f6D5PGAWfUqXhGFj9XQPr8qDfSY+1Lhv3MxOAw8TgUG/zpK1SFJ/5UKGKwwfg==
+"@shiftcoders/dynamo-easy@^7.1.0":
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/@shiftcoders/dynamo-easy/-/dynamo-easy-7.1.0.tgz#aaf3775c3460177992d76f6b744dc45565b9cec7"
+  integrity sha512-Nyt+OdhfztuCt6fxctjSlVf5ELElJLOmDzlZJuqbgYbyvUMiIxi9Cs7vQ2XE5CJ0k5BPShdkXXKefgBCaB6kSA==
 
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
