@@ -29,7 +29,7 @@
     "@serverless/event-mocks": "^1.1.1",
     "@types/aws-lambda": "^8.10.62",
     "@types/jest": "^26.0.13",
-    "@types/node": "^14.10.1",
+    "@types/node": "^14.11.5",
     "@types/uuid": "^8.3.0",
     "@types/yup": "^0.29.7",
     "@typescript-eslint/eslint-plugin": "^4.1.1",
