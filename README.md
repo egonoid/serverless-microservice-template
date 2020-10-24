@@ -1,13 +1,26 @@
-# Serverless Mircoservice Template
+# egonoid Microservice Template
 
 Based on [aws-nodejs-typescript](https://github.com/serverless/serverless/tree/master/lib/plugins/create/templates/aws-nodejs-typescript).
 
 ## Installation
 
+### Clone Microservice Template
+
 ```bash
-git clone https://github.com/egonoid/serverless-microservice-template new-service
+git clone https://github.com/egonoid/microservice-template new-service
 cd new-service
-rm -r .git
+rm -rf .git
+```
+
+### Update package.json
+
+- Set `version` to your preferred value (e.g. 0.0.1)
+- Set `name` to your preferred value (e.g. acme-tenant-service)
+- Set `description` to your preferred value (e.g. ACME Tenant Microservice)
+
+### Add to Git
+
+```bash
 git init
 git add --all
 git commit -m "Initial commit"
