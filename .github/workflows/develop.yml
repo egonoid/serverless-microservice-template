@@ -1,9 +1,9 @@
-name: Microservice Template features CI
+name: Microservice Template develop CI
 
 on:
   push:
     branches:
-      - 'feature/**'
+      - 'develop'
 
 jobs:
   build:
