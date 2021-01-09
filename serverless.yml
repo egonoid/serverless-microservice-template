@@ -1,5 +1,4 @@
-service:
-  name: microservice-template # change this
+service: microservice-template # change this
 
 plugins:
   - serverless-webpack
@@ -21,6 +20,9 @@ provider:
     REGION: '#{AWS::Region}'
     STAGE: ${self:provider.stage}
     DYNAMO_DB_TABLE: ${opt:stage, self:provider.stage}-${self:service}
+  apiGateway:
+    shouldStartNameWithService: true
+  lambdaHashingVersion: 20201221
   iamRoleStatements:
     - Effect: Allow
       Action:

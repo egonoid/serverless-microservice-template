@@ -17,7 +17,7 @@ import { SortType } from '@common/enums/sortType.enum';
 export const readAll: APIGatewayProxyHandler = async (
   event: APIGatewayProxyEvent
 ): Promise<APIGatewayProxyResult> => {
-  if (!event.pathParameters) {
+  if (!event.pathParameters?.tenantId) {
     return {
       statusCode: 400,
       body: JSON.stringify({ error: 'INVALID_REQUEST' }),

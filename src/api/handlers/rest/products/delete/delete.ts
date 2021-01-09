@@ -15,8 +15,11 @@ import { eventLogger } from '@egonoid/api-middlewares';
 export const del: APIGatewayProxyHandler = async (
   event: APIGatewayProxyEvent
 ): Promise<APIGatewayProxyResult> => {
-  if (!event.pathParameters?.tenantId) {
-    return { statusCode: 400, body: '' };
+  if (!event.pathParameters?.tenantId || !event.pathParameters?.id) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ error: 'INVALID_REQUEST' }),
+    };
   }
 
   const { tenantId, id } = event.pathParameters;
