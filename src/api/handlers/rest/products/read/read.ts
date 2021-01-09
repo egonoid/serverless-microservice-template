@@ -16,8 +16,11 @@ import { handleError } from '@api/extensions/error.extensions';
 export const read: APIGatewayProxyHandler = async (
   event: APIGatewayProxyEvent
 ): Promise<APIGatewayProxyResult> => {
-  if (!event.pathParameters) {
-    return { statusCode: 400, body: '' };
+  if (!event.pathParameters?.tenantId || !event.pathParameters?.id) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ error: 'INVALID_REQUEST' }),
+    };
   }
 
   const { tenantId, id } = event.pathParameters;

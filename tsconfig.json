@@ -13,6 +13,7 @@
     "emitDecoratorMetadata": true,
     "strict": true,
     "strictPropertyInitialization": false,
+    "skipLibCheck": true,
     "baseUrl": "src",
     "paths": {
       "@api/*": ["api/*"],
